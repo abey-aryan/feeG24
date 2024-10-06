@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Editor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+        .profile {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            width: 320px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile:hover {
+            transform: translateY(-10px);
+        }
+
+        .profile img {
+            width: 120px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile img:hover {
+            transform: rotate(360deg);
+        }
+
+        .profile h2, .profile p {
+            color: #fff;
+            margin: 10px 0;
+            font-weight: 300;
+        }
+
+        .input-section {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            width: 320px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .input-section:hover {
+            transform: translateY(-10px);
+        }
+
+        .input-section label {
+            display: block;
+            margin-top: 10px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .input-section input {
+            width: 90%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 14px;
+            transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .input-section input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        button {
+            padding: 12px 24px;
+            margin-top: 20px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #f12711, #f5af19);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .profile, .input-section {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile">
+        <img id="profile-pic" src="https://i.pravatar.cc/250?u=mail@ashallendesign.co.uk" alt="Profile Picture">
+        <h2 id="profile-name">Name: Monk's 😁</h2>
+        <p id="profile-bio">Bio: Bio Still 🙄</p>
+    </div>
+
+    <div class="input-section">
+        <label for="name-input">Update Name:</label>
+        <input type="text" id="name-input" placeholder="Enter New Name"><br>
+
+        <label for="bio-input">Update Bio:</label>
+        <input type="text" id="bio-input" placeholder="Enter New Bio"><br>
+
+        <label for="pic-input">Update Profile Picture URL:</label>
+        <input type="text" id="pic-input" placeholder="Enter Image URL"><br>
+
+        <button id="update-button">Update Profile</button>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById('name-input');
+        const bioInput = document.getElementById('bio-input');
+        const picInput = document.getElementById('pic-input');
+        const updateButton = document.getElementById('update-button');
+
+        const profileName = document.getElementById('profile-name');
+        const profileBio = document.getElementById('profile-bio');
+        const profilePic = document.getElementById('profile-pic');
+
+       
+        updateButton.addEventListener('click', function() {
+            
+            profileName.textContent = nameInput.value ? `Name: ${nameInput.value}` : 'Name: Monk\'s 😁';
+            profileBio.textContent = bioInput.value ? `Bio: ${bioInput.value}` : 'Bio: Bio Still 🙄';
+
+            profilePic.src = picInput.value ? picInput.value : `https://i.pravatar.cc/250?u=${Math.random()}`;
+        });
+    </script>
+</body>
+</html>
